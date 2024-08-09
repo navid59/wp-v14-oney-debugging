@@ -138,6 +138,21 @@ function oneynetopia_single_product_page()
 
     // Get plugin settings
     $NtpPaymentMethod = get_option( 'woocommerce_netopiapayments_settings', [] );
+
+    // if the plugin is not configure yet, return null
+    if(!is_array($NtpPaymentMethod)) {
+        return;
+    }
+
+    // if the plugin is not configure yet, return null
+    if(count($NtpPaymentMethod)=== 0) {
+        return;
+    }
+    
+    // check if the payment method, not selected yet
+    if(!is_array($NtpPaymentMethod['payment_methods'])) {
+        return;
+    }
     
     // if  "Oney" is NOT selected, return null
     if(!in_array('oney', $NtpPaymentMethod['payment_methods'])){

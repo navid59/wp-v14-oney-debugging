@@ -79,6 +79,17 @@ final class netopiapaymentsBlocks extends AbstractPaymentMethodType {
 
 		// Check if "Oney" is selected in woocommerce blocks
 		$NtpPaymentMethod = $this->get_setting( 'payment_methods' );
+
+		// if the plugin is not configure yet, return null
+		if(!is_array($NtpPaymentMethod)) {
+			return;
+		}
+	
+		// if the plugin is not configure yet, return null
+		if(count($NtpPaymentMethod)=== 0) {
+			return;
+		}
+
 		$display = in_array('oney', $NtpPaymentMethod) ? 'block' : 'none';
 
 		// Get the minimum purchase amount (adjust accordingly)
