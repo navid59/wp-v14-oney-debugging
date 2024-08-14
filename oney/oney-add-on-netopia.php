@@ -509,7 +509,8 @@ function customize_payment_method_title($title, $payment_method) {
         $htmlImage = '<img style="display: inline;" src="' . esc_url(NTP_PLUGIN_DIR.'img/netopiapayments.gif') . '" />';
 
         // Get the value of the option set in the settings page
-        $cart_total = WC()->cart->total; // Get the total amount from WooCommerce cart
+        // $cart_total = WC()->cart->total; // Get the total amount from WooCommerce cart
+        $cart_total = WC()->cart->get_cart_total(); // Get the total amount from WooCommerce cart
     
         if ($cart_total < 450 || $cart_total > 12000){
             return $title;
@@ -557,7 +558,8 @@ function customize_payment_method_description($gateways) {
 	$max_purchase_amount = 12000;
     $html = "";
     // Get the value of the option set in the settings page
-    $cart_total = WC()->cart->total; // Get the total amount from WooCommerce cart
+    // $cart_total = WC()->cart->total; // Get the total amount from WooCommerce cart
+    $cart_total = WC()->cart->get_cart_total(); // Get the total amount from WooCommerce cart
     $cart_total_divided_by_3 = number_format($cart_total / 3, 2); // Calculate total divided by 3 rates and limit to 2 decimals
     $cart_total_divided_by_4 = number_format($cart_total / 4, 2); // Calculate total divided by 4 rates and limit to 2 decimals
 
